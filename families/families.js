@@ -26,7 +26,7 @@ function fetchAndDisplayFamilies(families) {
             const bunnyEl = document.createElement('div');
 
             bunnyEl.classList.add('bunny');
-            bunnyEl.textContent = bunny.name;
+            bunnyEl.textContent = `${bunny.name}way`;
 
             bunnyEl.addEventListener('click', async () => {
                 await deleteBunny(bunny.id);
