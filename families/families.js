@@ -21,11 +21,26 @@ function displayFamilies(families) {
         familyEl.classList.add('vin');
 
         nameEl.textContent = family.name;
+
+        for (let bunny of family.fuzzy_bunnies) {
+            const bunnyEl = document.createElement('div');
+
+            bunnyEl.classList.add('bunny');
+            bunnyEl.textContent = bunny.name;
+
+            bunnyEl.addEventListener('click', async () => {
+                await deleteBunny(bunny.id);
+
+                const updatedFamilies = await getFamilies();
+
+                displayFamilies(updatedFamilies);
+            });
+            bunniesEl.append(bunnyEl);
+        }
+
+        familyEl.append(nameEl, bunniesEl);
+        familiesEl.append(familyEl);
     }
-
-    // append the bunniesEl and nameEl to the familyEl
-
-    // append the familyEl to the familiesEl
 }
 
 window.addEventListener('load', async () => {

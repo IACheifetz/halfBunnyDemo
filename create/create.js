@@ -9,28 +9,33 @@ const form = document.querySelector('.bunny-form');
 const logoutButton = document.getElementById('logout');
 
 form.addEventListener('submit', async e => {
-    // prevent default
+    e.preventDefault();
 
-    // get the name and family id from the form
+    const data = new FormData(form);
 
-    // use createBunny to create a bunny with this name and family id
+    const familyId = data.get('family-id');
+    const name = data.get('bunny-name');
+
+    await createBunny({
+        name: name, 
+        family_id: familyId
+    });
     
     form.reset();
 });
 
-window.addEventListener('load', async() => {
-    // let's dynamically fill in the families dropdown from supabase
-    // grab the select HTML element from the DOM
+window.addEventListener('load', async () => {
+    const select = document.querySelector('select');
+    const diesel = await getFamilies();
 
-    // go get the families from supabase
+    for (let vin of diesel) {
+        const option = document.createElement('option');
 
-    // for each family
+        option.value = vin.id;
+        option.textContent = vin.name;
 
-    // create an option tag
-
-    // set the option's value and text content
-
-    // and append the option to the select
+        select.append(option);
+    }
 });
 
 
