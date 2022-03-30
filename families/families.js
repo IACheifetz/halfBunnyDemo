@@ -9,7 +9,7 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-function displayFamilies(families) {
+function fetchAndDisplayFamilies(families) {
     familiesEl.textContent = '';
 
     for (let family of families) {
@@ -33,7 +33,7 @@ function displayFamilies(families) {
 
                 const updatedFamilies = await getFamilies();
 
-                displayFamilies(updatedFamilies);
+                fetchAndDisplayFamilies(updatedFamilies);
             });
             bunniesEl.append(bunnyEl);
         }
@@ -46,5 +46,5 @@ function displayFamilies(families) {
 window.addEventListener('load', async () => {
     const families = await getFamilies();
 
-    displayFamilies(families);
+    fetchAndDisplayFamilies(families);
 });
