@@ -150,14 +150,14 @@ footer {
     justify-content: center;
 }
 
-.family {
+.vin {
     width: 200px;
     margin: 10px;
     border: solid 1px black;
     padding: 10px;
 }
 
-.family h3 {
+.vin h3 {
     margin: 0;
 }
 
